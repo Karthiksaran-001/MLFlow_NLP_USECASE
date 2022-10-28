@@ -30,6 +30,17 @@ def main(config_path, params_path):
     artificats = config["artifacts"]
     prepare_data_dir_path = os.path.join(artificats["ARTIFACTS_DIR"] , artificats["PREPARED_DATA"])
     create_directories([prepare_data_dir_path])
+    train_data_path = os.path.join(prepare_data_dir_path , artificats["TRAIN_DATA"])
+    test_data_path =  os.path.join(prepare_data_dir_path , artificats["TEST_DATA"])
+    
+    encode = params["prepare"]["encode"]
+    with open(input_data , encoding=encode) as fd_in:
+        with open(train_data_path , "w" , encoding=encode) as fd_out_train:
+            with open(test_data_path , "w" , encoding=encode) as fd_out_test:
+                pass
+                # process_posts(fd_in , fd_out_train , fd_out_test , "<python>" , split)
+
+
 
 
 
