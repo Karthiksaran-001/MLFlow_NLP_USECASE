@@ -16,7 +16,7 @@ logging.basicConfig(
     )
 
 
-def main(config_path, params_path):
+def load_data(config_path, params_path):
     config = read_yaml(config_path)
     params = read_yaml(params_path)
     
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     try:
         logging.info("\n********************")
         logging.info(f">>>>> stage {STAGE} started <<<<<")
-        main(config_path=parsed_args.config, params_path=parsed_args.params)
+        load_data(config_path=parsed_args.config, params_path=parsed_args.params)
         logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
     except Exception as e:
         logging.exception(e)
