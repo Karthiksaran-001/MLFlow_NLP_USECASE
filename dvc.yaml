@@ -1,12 +1,16 @@
 stages:
   load_data:
-    cmd: python src/stage_01_preparation.py --config=config/config.yaml --params=params.yaml
+    cmd: python src/stage_01_preparation.py --config=configs/config.yaml --params=params.yaml
     deps:
       - src/stage_01_preparation.py
       - src/utils/common.py
-      - config/config.yaml
+      - configs/config.yaml
       - params.yaml
       - data/data.xml
+    params:
+      - prepare.split
+      - prepare.seed
+      - prepare.encode
     outs:
       - artifacts/prepared/train.tsv
       - artifacts/prepared/test.tsv
