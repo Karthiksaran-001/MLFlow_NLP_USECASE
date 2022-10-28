@@ -3,3 +3,11 @@ prepare:
   split: 0.20
   seed: 2021
   encode: utf8
+featurize:
+  max_features: 2500
+  ngrams: 2
+
+train:
+  seed: 2021
+  n_est: 100
+  min_split: 16

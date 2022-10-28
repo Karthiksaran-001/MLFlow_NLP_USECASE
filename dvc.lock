@@ -4,20 +4,20 @@ stages:
     cmd: python src/stage_01_preparation.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: configs/config.yaml
-      md5: 373cd54542ddbcc6fd40f747cbc1362a
-      size: 231
+      md5: d77dff06da74538754d956360f14d462
+      size: 375
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
       size: 37891850
     - path: params.yaml
-      md5: cd2e85208a89ec615f9835f993f5a6d0
-      size: 124
+      md5: 1363367fec68ad4a98e7f1f6d5a3b38e
+      size: 226
     - path: src/stage_01_preparation.py
       md5: 341d29fc9e197b6150d2cdd09433ce6a
       size: 2097
     - path: src/utils/common.py
-      md5: d162961d817182441383bdb0e674e685
-      size: 675
+      md5: 4c3b56e24d7477c0a19d54a490a0b068
+      size: 1000
     params:
       params.yaml:
         prepare.encode: utf8
@@ -30,3 +30,35 @@ stages:
     - path: artifacts/prepared/train.tsv
       md5: 553034c4cf40efc63c99c19fe98610d0
       size: 18986541
+  featurize:
+    cmd: python src/stage_02_featurization.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/prepared/test.tsv
+      md5: 60c757f3b30604473de7fa775dfc00d9
+      size: 4899778
+    - path: artifacts/prepared/train.tsv
+      md5: 553034c4cf40efc63c99c19fe98610d0
+      size: 18986541
+    - path: configs/config.yaml
+      md5: d77dff06da74538754d956360f14d462
+      size: 375
+    - path: src/stage_02_featurization.py
+      md5: 60d25b8706ecb8bab0d98d1a45007f95
+      size: 3004
+    - path: src/utils/common.py
+      md5: 4c3b56e24d7477c0a19d54a490a0b068
+      size: 1000
+    - path: src/utils/featurize.py
+      md5: 91d515f8a5c06f0d0c055c0f3b6b3125
+      size: 516
+    params:
+      params.yaml:
+        featurize.max_features: 2500
+        featurize.ngrams: 2
+    outs:
+    - path: artifacts/features/test.pkl
+      md5: fc8be186a9d8e8345004a2a9afdcf86f
+      size: 2503363
+    - path: artifacts/features/train.pkl
+      md5: 3fad7401213ca6ec8019c4f9eac30a73
+      size: 9761483
