@@ -43,7 +43,9 @@ def featurize(config_path, params_path):
     train_words = np.array(df_train.text.str.lower().values.astype("U")) ## << U1000
 
     bag_of_words = CountVectorizer(
-        stop_words="english", max_features=max_features, ngram_range=(1, ngrams)
+        stop_words="english", 
+        max_features=max_features, 
+        ngram_range=(1, ngrams)
     )
 
     bag_of_words.fit(train_words)
