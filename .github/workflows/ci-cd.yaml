@@ -9,8 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: iterative/setup-cml@v1
-      - name: 'Deploy runner in EC2'
-        shell: bash
+      - uses: 'actions/setup-python@v2'
+        with:
+           python-version: '3.7'
+      - name: cml-run
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
