@@ -4,8 +4,8 @@ stages:
     cmd: python src/stage_01_preparation.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: configs/config.yaml
-      md5: d77dff06da74538754d956360f14d462
-      size: 375
+      md5: 48bb15b6a9c807a7b11617bec2ec0559
+      size: 452
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
       size: 37891850
@@ -40,8 +40,8 @@ stages:
       md5: 553034c4cf40efc63c99c19fe98610d0
       size: 18986541
     - path: configs/config.yaml
-      md5: d77dff06da74538754d956360f14d462
-      size: 375
+      md5: 48bb15b6a9c807a7b11617bec2ec0559
+      size: 452
     - path: src/stage_02_featurization.py
       md5: 6504a4bf02a977437c8b6fc6fa1debef
       size: 3024
@@ -69,8 +69,8 @@ stages:
       md5: 785ee3adbcac719738aa4d23ec5adde9
       size: 9761370
     - path: configs/config.yaml
-      md5: d77dff06da74538754d956360f14d462
-      size: 375
+      md5: 48bb15b6a9c807a7b11617bec2ec0559
+      size: 452
     - path: src/stage_03_train.py
       md5: cbe4f81cabde50d52c83feae3bad8292
       size: 2269
@@ -86,3 +86,31 @@ stages:
     - path: artifacts/model/model.pkl
       md5: 1ec3b0b13428b7f90111d5b44867124e
       size: 3495446
+  evaluate:
+    cmd: python src/stage_05_evaluate.py --config=configs/config.yaml
+    deps:
+    - path: artifacts/features/test.pkl
+      md5: f337717d4f0c42f48aab4cc73272df5c
+      size: 2503262
+    - path: artifacts/model/model.pkl
+      md5: 1ec3b0b13428b7f90111d5b44867124e
+      size: 3495446
+    - path: configs/config.yaml
+      md5: 48bb15b6a9c807a7b11617bec2ec0559
+      size: 452
+    - path: src/stage_05_evaluate.py
+      md5: b6a8fc4edf3d4c942ba36d2c4f273763
+      size: 2784
+    - path: src/utils/common.py
+      md5: 4c3b56e24d7477c0a19d54a490a0b068
+      size: 1000
+    outs:
+    - path: prc.json
+      md5: bbf4ba1cf59d2b153305d90976f4eecf
+      size: 127690
+    - path: roc.json
+      md5: a58da788ed51d86ba08203c10fee2008
+      size: 87515
+    - path: scores.json
+      md5: def35367f6f218c9faaeb4459b7d1778
+      size: 76
