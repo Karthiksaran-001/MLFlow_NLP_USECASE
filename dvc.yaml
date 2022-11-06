@@ -1,8 +1,16 @@
 stages:
-  load_data:
-    cmd: python src/stage_01_preparation.py --config=configs/config.yaml --params=params.yaml
+  get_data:
+    cmd: python src/stage_01_get_data.py --config=configs/config.yaml
     deps:
-      - src/stage_01_preparation.py
+      - src/stage_01_get_data.py
+      - src/utils/common.py
+      - configs/config.yaml
+    outs:
+      - data/data.xml
+  load_data:
+    cmd: python src/stage_02_preparation.py --config=configs/config.yaml --params=params.yaml
+    deps:
+      - src/stage_02_preparation.py
       - src/utils/common.py
       - configs/config.yaml
       - params.yaml
@@ -16,9 +24,9 @@ stages:
       - artifacts/prepared/test.tsv
 
   featurize:  
-    cmd: python src/stage_02_featurization.py --config=configs/config.yaml --params=params.yaml
+    cmd: python src/stage_03_featurization.py --config=configs/config.yaml --params=params.yaml
     deps:
-      - src/stage_02_featurization.py
+      - src/stage_03_featurization.py
       - artifacts/prepared/train.tsv
       - artifacts/prepared/test.tsv
       - src/utils/common.py
@@ -32,9 +40,9 @@ stages:
       - artifacts/features/test.pkl
   
   train:
-    cmd: python src/stage_03_train.py --config=configs/config.yaml --params=params.yaml
+    cmd: python src/stage_04_train.py --config=configs/config.yaml --params=params.yaml
     deps:
-      - src/stage_03_train.py
+      - src/stage_04_train.py
       - artifacts/features/train.pkl
       - src/utils/common.py
       - configs/config.yaml

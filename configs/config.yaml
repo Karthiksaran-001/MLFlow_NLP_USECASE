@@ -11,6 +11,7 @@ artifacts:
   MODEL_DIR: model
   MODEL_NAME: model.pkl
 
+source_data_url: https://common-data-001.s3.ap-south-1.amazonaws.com/aiops-class-demo-data/data.xml
 
 source_data:
   data_dir : data
