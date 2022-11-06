@@ -1,12 +1,12 @@
 stages:
-  get_data:
-    cmd: python src/stage_01_get_data.py --config=configs/config.yaml
-    deps:
-      - src/stage_01_get_data.py
-      - src/utils/common.py
-      - configs/config.yaml
-    outs:
-      - data/data.xml
+  # get_data:
+  #   cmd: python src/stage_01_get_data.py --config=configs/config.yaml
+  #   deps:
+  #     - src/stage_01_get_data.py
+  #     - src/utils/common.py
+  #     - configs/config.yaml
+  #   outs:
+  #     - data/data.xml
   load_data:
     cmd: python src/stage_02_preparation.py --config=configs/config.yaml --params=params.yaml
     deps:

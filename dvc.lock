@@ -1,20 +1,20 @@
 schema: '2.0'
 stages:
   load_data:
-    cmd: python src/stage_01_preparation.py --config=configs/config.yaml --params=params.yaml
+    cmd: python src/stage_02_preparation.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: configs/config.yaml
-      md5: 48bb15b6a9c807a7b11617bec2ec0559
-      size: 452
+      md5: d992a1019d067e1b30bed8941b83c7c1
+      size: 561
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
       size: 37891850
     - path: params.yaml
       md5: 1363367fec68ad4a98e7f1f6d5a3b38e
       size: 226
-    - path: src/stage_01_preparation.py
-      md5: 341d29fc9e197b6150d2cdd09433ce6a
-      size: 2097
+    - path: src/stage_02_preparation.py
+      md5: 61de0826997dcfcf5b08a5b40b77710b
+      size: 2105
     - path: src/utils/common.py
       md5: 4c3b56e24d7477c0a19d54a490a0b068
       size: 1000
@@ -31,7 +31,7 @@ stages:
       md5: 553034c4cf40efc63c99c19fe98610d0
       size: 18986541
   featurize:
-    cmd: python src/stage_02_featurization.py --config=configs/config.yaml --params=params.yaml
+    cmd: python src/stage_03_featurization.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: artifacts/prepared/test.tsv
       md5: 60c757f3b30604473de7fa775dfc00d9
@@ -40,9 +40,9 @@ stages:
       md5: 553034c4cf40efc63c99c19fe98610d0
       size: 18986541
     - path: configs/config.yaml
-      md5: 48bb15b6a9c807a7b11617bec2ec0559
-      size: 452
-    - path: src/stage_02_featurization.py
+      md5: d992a1019d067e1b30bed8941b83c7c1
+      size: 561
+    - path: src/stage_03_featurization.py
       md5: 6504a4bf02a977437c8b6fc6fa1debef
       size: 3024
     - path: src/utils/common.py
@@ -63,15 +63,15 @@ stages:
       md5: 785ee3adbcac719738aa4d23ec5adde9
       size: 9761370
   train:
-    cmd: python src/stage_03_train.py --config=configs/config.yaml --params=params.yaml
+    cmd: python src/stage_04_train.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: artifacts/features/train.pkl
       md5: 785ee3adbcac719738aa4d23ec5adde9
       size: 9761370
     - path: configs/config.yaml
-      md5: 48bb15b6a9c807a7b11617bec2ec0559
-      size: 452
-    - path: src/stage_03_train.py
+      md5: d992a1019d067e1b30bed8941b83c7c1
+      size: 561
+    - path: src/stage_04_train.py
       md5: cbe4f81cabde50d52c83feae3bad8292
       size: 2269
     - path: src/utils/common.py
@@ -96,8 +96,8 @@ stages:
       md5: 1ec3b0b13428b7f90111d5b44867124e
       size: 3495446
     - path: configs/config.yaml
-      md5: 48bb15b6a9c807a7b11617bec2ec0559
-      size: 452
+      md5: d992a1019d067e1b30bed8941b83c7c1
+      size: 561
     - path: src/stage_05_evaluate.py
       md5: b6a8fc4edf3d4c942ba36d2c4f273763
       size: 2784
@@ -106,7 +106,7 @@ stages:
       size: 1000
     outs:
     - path: prc.json
-      md5: bbf4ba1cf59d2b153305d90976f4eecf
+      md5: 2c782bab0fb4c79d736294705567cf5a
       size: 127690
     - path: roc.json
       md5: a58da788ed51d86ba08203c10fee2008
