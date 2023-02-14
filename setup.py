@@ -4,24 +4,17 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 ## edit below variables as per your requirements -
-REPO_NAME = "DVC_NLPCase"
+REPO_NAME = "MLFlow_NLP_USECASE"
 AUTHOR_USER_NAME = "Karthiksaran-001"
 SRC_REPO = "src"
-LIST_OF_REQUIREMENTS = [  'dvc',
-        'pandas',
-        'scipy',
-        'scikit-learn',
-        'lxml',
-        'PyYAML',
-        'numpy',
-        'tqdm']
+LIST_OF_REQUIREMENTS = []
 
 
 setup(
     name=SRC_REPO,
     version="0.0.2",
     author=AUTHOR_USER_NAME,
-    description="A small package for DVC",
+    description="A small package for Mlflow",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
